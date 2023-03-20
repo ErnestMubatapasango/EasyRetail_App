@@ -1,0 +1,35 @@
+{
+    "products": [
+       {
+            "id": 1,
+            "name": "orange",
+            "price":"2",
+            "icons": "https://pixabay.com/photos/oranges-citrus-fruits-fruits-1995056/"
+            
+       },
+       {
+            "id": 3,
+            "name": "apple",
+            "price":"1",
+            "icons": "https://pixabay.com/photos/apples-leaves-fall-still-life-1776744/"
+       },
+       {
+            "id": 2,
+            "name": "banana",
+            "price":"2",
+            "icons": "https://pixabay.com/photos/bananas-fruits-yellow-healthy-1119790/"
+       },
+       {
+            "id": 4,
+            "name": "Watermelon",
+            "price":"5",
+            "icons": "https://pixabay.com/photos/watermelon-juicy-fruits-sliced-815072/"
+       },
+       {
+            "id": 5,
+            "name": "grapes",
+            "price":"6",
+            "icons": "https://pixabay.com/photos/grapes-bunch-fruits-viticulture-2032838/"
+       }
+    ]
+}

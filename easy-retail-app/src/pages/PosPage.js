@@ -4,6 +4,8 @@ import ProductSearch from '../components/ProductSearch'
 import './PosPage.css'
 
 function PosPage() {
+
+
   return (
     <div className='pos--container'>
       <div className='pos--content__wrapper'>

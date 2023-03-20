@@ -1,15 +1,19 @@
 import React from 'react';
-import './App.css';
-import ProductSearch from './components/ProductSearch';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PosPage from './pages/PosPage';
+import './App.css'
 
 function App() {
   return (
     <div className="App">
-      <div className='app--content__wrapper'>
-        <ProductSearch />
-        <ProductSearch />
-      </div>
-      
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomePage/>}/>
+          <Route path='/pos' element={<PosPage/>}/>
+        </Routes>
+      </Router>
+     
     </div>
   );
 }
