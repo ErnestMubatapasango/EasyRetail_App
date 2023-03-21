@@ -17,7 +17,7 @@ function ProductSearch() {
         .then(data => setProducts(data))
         console.log(products)
         setIsLoading(false)
-    }, [products])
+    }, [])
 
     
     function handleChange(event){
@@ -44,16 +44,18 @@ function ProductSearch() {
                 <button className='search--button'><FaSearch/></button>
             </div>
             <hr/>
-            <div>
+            <div className='product--container'>
                 {isLoading ? 'LOADING...' :   
                 products ? 
-                products.map((product) => {
+                products.map(product => {
                     return(
-                        <div key={product.id} className='products'>
-                            <h4>{product.name}</h4>
-                            <img src={product.icons} alt=''/>
+                        
+                        <div key={product.id} className='product'>
+                            <h5>{product.name}</h5>
+                            <img src={product.icons} className='product--image' alt=''/>
                             <p><strong>${product.price}</strong></p>
                         </div>
+                      
                     )
                 })
                 : <p>No items found</p>} 

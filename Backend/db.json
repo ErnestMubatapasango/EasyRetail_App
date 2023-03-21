@@ -4,32 +4,32 @@
             "id": 1,
             "name": "orange",
             "price":"2",
-            "icons": "https://pixabay.com/photos/oranges-citrus-fruits-fruits-1995056/"
+            "icons": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn72bf1Eo_YLWtLoK6Oq3LXJ2lrxSdt-yxWw&usqp=CAU"
             
        },
        {
             "id": 3,
             "name": "apple",
             "price":"1",
-            "icons": "https://pixabay.com/photos/apples-leaves-fall-still-life-1776744/"
+            "icons": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBb96JFtyzZkmqZOTuaBdZMi96qBzwNa5hg&usqp=CAU"
        },
        {
             "id": 2,
             "name": "banana",
             "price":"2",
-            "icons": "https://pixabay.com/photos/bananas-fruits-yellow-healthy-1119790/"
+            "icons": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQleiSuuvprxkJemen3lE-l1MzL1hANqeZ5Yw&usqp=CAU"
        },
        {
             "id": 4,
             "name": "Watermelon",
             "price":"5",
-            "icons": "https://pixabay.com/photos/watermelon-juicy-fruits-sliced-815072/"
+            "icons": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOx3_pe21yU3n6WLmv-dDOCgt6Kv3cKPu-Ng&usqp=CAU"
        },
        {
             "id": 5,
             "name": "grapes",
             "price":"6",
-            "icons": "https://pixabay.com/photos/grapes-bunch-fruits-viticulture-2032838/"
+            "icons": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-LB5WJSi2fgpJRV0C_yBqAehvgGGaYKgZ3Q&usqp=CAU"
        }
     ]
 }
