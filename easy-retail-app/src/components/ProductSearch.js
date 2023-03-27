@@ -4,15 +4,21 @@ import {AiOutlineBarcode} from 'react-icons/ai';
 import {MdDeleteForever} from 'react-icons/md';
 import './ProductSearch.css';
 
+import { toast } from 'react-toastify';
+
+//print the items in our products state
+import {useReactToPrint} from 'react-to-print';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Button, TableFooter } from '@mui/material';
+import { Button} from '@mui/material';
+import { ComponentToPrint } from './ComponentToPrint';
 
-function ProductSearch() {
+function ProductSearch(){
 
     const [productData, setProductData] =React.useState({
         search: ""
@@ -21,7 +27,13 @@ function ProductSearch() {
     const [products, setProducts] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(false)
     const [cart, setCart] =React.useState([])
-    const [totalAmount, setTotalAmount] =React.useState(0)
+    const [totalAmount,  setTotalAmount] =React.useState(0)
+
+    let Subtotal = totalAmount;
+    let taxRate = (0.07 * Subtotal).toFixed(2);
+    let total = totalAmount + parseFloat(taxRate);
+
+    const componentRef = React.useRef();
 
     React.useEffect(()=> {
         setIsLoading(true)
@@ -75,7 +87,7 @@ function ProductSearch() {
                 newCart.push(cartItem);
              }
         })
-        setCart(newCart); 
+        setCart(newCart, toast(`added ${newItem.name} to cart`)); 
     }
     else{
         let addProductToCart = {
@@ -87,7 +99,9 @@ function ProductSearch() {
         setCart(prevCart => ([
             ...prevCart,
             addProductToCart
+           
         ]))
+        toast(`added ${product.name} to cart`)
     }
   }
 
@@ -99,6 +113,15 @@ function ProductSearch() {
   const cancelTransaction = ()=> {
     setCart(cart => []);
   }
+
+const handleReactToPrint = useReactToPrint({
+    content: () => componentRef.current,
+})
+
+const handlePrint = () =>{  
+handleReactToPrint()
+};
+  
 
   return (
     <div className='pos--container'>
@@ -150,6 +173,15 @@ function ProductSearch() {
                 </div>
                 <hr/>
                 <div>
+                    <div style={{display: 'none'}}>
+                        <ComponentToPrint 
+                            cart={cart} 
+                            ref={componentRef}
+                            Subtotal={Subtotal}
+                            taxRate = {taxRate}
+                            total={total}
+                        />
+                    </div>
                     <TableContainer>
                         <Table sx={{ minWidth: 550 }} aria-label="spanning table">
                             <TableHead>
@@ -167,7 +199,7 @@ function ProductSearch() {
                                 </TableRow>
                             </TableHead>
 
-                                <TableBody>
+                                <TableBody >
                                     {
                                         cart ? cart.map((cartProduct, key) => 
                                             <TableRow>
@@ -189,7 +221,32 @@ function ProductSearch() {
                                     <TableCell colSpan={2}></TableCell>
                                     <TableCell><strong>Subtotal</strong></TableCell>
                                     <TableCell align='right' colSpan={1}></TableCell>
-                                    <TableCell align='right'>${totalAmount}.00</TableCell>
+                                    <TableCell align='right'>${Subtotal.toFixed(2)}</TableCell>
+                                </TableRow>
+
+                                <TableRow>
+                                    <TableCell colSpan={2}></TableCell>
+                                    <TableCell><strong>Tax</strong></TableCell>
+                                    <TableCell align='right' colSpan={1}>7%</TableCell>
+                                    <TableCell align='right'>${taxRate}</TableCell>
+                                    <TableCell align='right'>
+                                        <Button style={{color:'white', backgroundColor:'red'}} onClick={() => cancelTransaction()}>VOID</Button>
+                                    </TableCell>
+                                </TableRow>
+
+                                <TableRow>
+                                    <TableCell colSpan={2}></TableCell>
+                                    <TableCell><strong>Total Amount</strong></TableCell>
+                                    <TableCell align='right' colSpan={1}></TableCell>
+                                    <TableCell align='right'>${total.toFixed(2)}</TableCell>
+                                    <TableCell align='right'>
+                                        <Button 
+                                            style={{color:'white', backgroundColor:'lightgreen'}}
+                                            onClick={handlePrint}
+                                        >
+                                            PAY
+                                        </Button>
+                                    </TableCell>
                                 </TableRow>
                         </Table>
                     </TableContainer>
